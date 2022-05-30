@@ -1,0 +1,19 @@
+script.gradle
+
+apply from: 'script.gradle'
+
+
+2. Java plugin
+у каждого plugin есть id - например java
+    пример
+    apply plugin: 'java'
+
+но предпочтительнее использовать
+plugins {
+    id 'java'
+}
+
+
+3. Java Application Lifecycle
+
+

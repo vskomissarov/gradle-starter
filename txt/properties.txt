@@ -1,0 +1,3 @@
+конфигурация 3 варианта работы
+ext{} - MAP
+gradle fourth -Dsys.example=sysValue1 -PprojetParam1=projectValue1

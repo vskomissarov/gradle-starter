@@ -1,0 +1,66 @@
+Gradle object model +
+
+Gradle life cycle
+settings gradle - описание модулей для билда
+для каждого модуля свой build.gradle и он преобразуется
+в объект скрипт который в свою очередь преобразуется в объект типа проект
+в объекте типа проект создаются скрипты по задачам, а они в действия.
+Инициализация
+Конфигурация
+Исполнение
+
+LifeCycle. Gradle Object.
+Инициализация
+println "init phase, setting file ${toString()}"
+println "gradle id ${hashCode()}"
+println "dir ${settings.settingsDir}"
+
+Lifecycle. Project object
+Фаза конфигурации
+
+
+
+Lifecycle. Task object
+Различные варианты создания объектов Task
+// task = new DefautlTask
+//def map = [description: "Hello task", group: "Liga"]
+//task(map, "hell") {
+//    println "configuration phase Hello task"
+//    println "task $description, group $group, actions: ${actions.size()}"
+//}
+
+
+task hello(description: "Hello task", group: "Liga", type: DefaultTask) {
+    println "configuration phase Hello task"
+    println "task $description, group $group, actions: ${actions.size()}"
+}
+type - это класс от которого по умолчанию наследуемся
+
+//task hello {
+//    println "configuration phase Hello task"
+//    description = "Hello task"
+//    group = "liga"
+//}
+//hello.description = "Hello task"
+//hello.group = "liga"
+
+//hello.configure Closure
+//hello {
+//    println "configuration phase Hello task"
+//    description = "Hello task"
+//    group = "liga"
+//}
+
+Lifecycle. Action object
+//Project -> [Task1, Task2]
+//Task -> [Action1, Action2] -> action.execution (execution phase)
+
+ doLast {
+        println "execution phase, Action1"
+    }
+
+    doFirst {
+        println "execution phase, Action2"
+    }
+Важен определяемый порядок doFirst будет первый doLast - последний
+
